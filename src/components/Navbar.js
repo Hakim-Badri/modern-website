@@ -18,30 +18,26 @@ function Navbar() {
     }
   };
   const closeMobileMenu = () => setIsMenuClicked(false);
+  const handleMenuClick = () => setIsMenuClicked(!isMenuClicked);
 
   window.addEventListener("resize", showButton);
   return (
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             TRVL <i className="fab fa-typo3"></i>
           </Link>
-          <div
-            className="menu-icon"
-            onClick={() => {
-              setIsMenuClicked(!isMenuClicked);
-            }}
-          >
+          <div className="menu-icon" onClick={handleMenuClick}>
             <i className={isMenuClicked ? "fas fa-times" : "fas fa-bars"}></i>
           </div>
           <ul className={isMenuClicked ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-items">
+            <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
-            <li className="nav-items">
+            <li className="nav-item">
               <Link
                 to="/services"
                 className="nav-links"
@@ -50,7 +46,7 @@ function Navbar() {
                 Services
               </Link>
             </li>
-            <li className="nav-items">
+            <li className="nav-item">
               <Link
                 to="/products"
                 className="nav-links"
@@ -59,7 +55,7 @@ function Navbar() {
                 Products
               </Link>
             </li>
-            <li className="nav-items">
+            <li className="nav-item">
               <Link
                 to="/sign-up"
                 className="nav-links-mobile"
@@ -70,7 +66,7 @@ function Navbar() {
             </li>
           </ul>
           {isButtonVisible && (
-            <Button buttonStyle="btn--outlined">SIGN UP</Button>
+            <Button buttonStyle="btn--outline">SIGN UP</Button>
           )}
         </div>
       </nav>
